@@ -20,6 +20,11 @@ namespace Repository
             Create(_event);
         }
 
+        public void DeleteEvent(Event _event)
+        {
+            Delete(_event);
+        }
+
         public async Task<IEnumerable<Event>> GetAllEventsAsync(bool trackChanges)
         {
             return await FindAll(trackChanges).OrderBy(e => e.Theme).ToListAsync();

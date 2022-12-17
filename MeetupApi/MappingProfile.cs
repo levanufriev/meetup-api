@@ -13,6 +13,8 @@ namespace MeetupApi
                            o => o.MapFrom(x => string.Join(' ', x.Date, x.Place)));
 
             CreateMap<EventForCreationDto, Event>();
+
+            CreateMap<EventForUpdateDto, Event>();
         }
     }
 }

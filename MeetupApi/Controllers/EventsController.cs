@@ -53,5 +53,43 @@ namespace MeetupApi.Controllers
             var eventDto = mapper.Map<EventDto>(_event);
             return CreatedAtRoute("EventById", new { id = eventDto.Id }, eventDto);
         }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateEvent(Guid id, [FromBody] EventForUpdateDto eventForUpdateDto)
+        {
+            if (eventForUpdateDto == null)
+            {
+                logger.LogError("EventForUpdateDto is null");
+                return BadRequest("EventForUpdateDto is null");
+            }
+
+            var _event = await repository.GetEventAsync(id, true);
+            if (_event == null)
+            {
+                logger.LogError($"Event with id: {id} doesn't exist in the database");
+                return NotFound();
+            }
+
+            mapper.Map(eventForUpdateDto, _event);
+            await repository.SaveAsync();
+
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteEvent(Guid id)
+        {
+            var _event = await repository.GetEventAsync(id, false);
+            if (_event == null)
+            {
+                logger.LogError($"Event with id: {id} doesn't exist in the database");
+                return NotFound();
+            }
+
+            repository.DeleteEvent(_event);
+            await repository.SaveAsync();
+
+            return NoContent();
+        }
     }
 }
