@@ -9,6 +9,10 @@ namespace Contracts
 {
     public interface IEventRepository
     {
-        Task<IEnumerable<Event>> GetAllEventsAsync(bool trackChanges); 
+        Task<IEnumerable<Event>> GetAllEventsAsync(bool trackChanges);
+        Task<Event> GetEventAsync(Guid id, bool trackChanges);
+        void CreateEvent(Event _event);
+
+        Task SaveAsync();
     }
 }
