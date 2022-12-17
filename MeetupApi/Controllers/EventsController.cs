@@ -2,6 +2,7 @@
 using Contracts;
 using Entities.Dtos;
 using Entities.Models;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MeetupApi.Controllers
@@ -87,6 +88,30 @@ namespace MeetupApi.Controllers
             }
 
             repository.DeleteEvent(_event);
+            await repository.SaveAsync();
+
+            return NoContent();
+        }
+
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> PartiallyUpdateEvent(Guid id, [FromBody] JsonPatchDocument<EventForUpdateDto> patchDoc)
+        {
+            if (patchDoc == null)
+            {
+                logger.LogError("patchDoc object is null.");
+                return BadRequest("patchDoc object is null");
+            }
+
+            var _event = await repository.GetEventAsync(id, true);
+            if (_event == null)
+            {
+                logger.LogError($"Event with id: {id} doesn't exist in the database");
+                return NotFound();
+            }
+
+            var eventToPatch = mapper.Map<EventForUpdateDto>(_event);
+            patchDoc.ApplyTo(eventToPatch);
+            mapper.Map(eventToPatch, _event);
             await repository.SaveAsync();
 
             return NoContent();
