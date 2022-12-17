@@ -1,8 +1,8 @@
 ﻿using Entities.ErrorModel;
 using Microsoft.AspNetCore.Diagnostics;
 using System.Net;
-using Serilog;
 using Repository;
+using Serilog;
 
 namespace MeetupApi.Extensions
 {
