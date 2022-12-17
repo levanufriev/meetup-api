@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeetupApi", "MeetupApi\Meet
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{7B812659-8CCF-4A53-BB62-F1DE6C8D44E4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contracts", "Contracts\Contracts.csproj", "{0E18B587-D9D0-4B9F-B985-74941F071D89}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Repository\Repository.csproj", "{CFE87FE4-7749-47B7-A783-1D399B474E13}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{7B812659-8CCF-4A53-BB62-F1DE6C8D44E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B812659-8CCF-4A53-BB62-F1DE6C8D44E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B812659-8CCF-4A53-BB62-F1DE6C8D44E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E18B587-D9D0-4B9F-B985-74941F071D89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E18B587-D9D0-4B9F-B985-74941F071D89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E18B587-D9D0-4B9F-B985-74941F071D89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E18B587-D9D0-4B9F-B985-74941F071D89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFE87FE4-7749-47B7-A783-1D399B474E13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFE87FE4-7749-47B7-A783-1D399B474E13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFE87FE4-7749-47B7-A783-1D399B474E13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFE87FE4-7749-47B7-A783-1D399B474E13}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
