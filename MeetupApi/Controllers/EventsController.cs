@@ -2,8 +2,12 @@
 using Contracts;
 using Entities.Dtos;
 using Entities.Models;
+using FluentValidation;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.IdentityModel.Tokens;
 
 namespace MeetupApi.Controllers
 {
@@ -98,7 +102,7 @@ namespace MeetupApi.Controllers
         {
             if (patchDoc == null)
             {
-                logger.LogError("patchDoc object is null.");
+                logger.LogError("patchDoc object is null");
                 return BadRequest("patchDoc object is null");
             }
 
@@ -110,7 +114,16 @@ namespace MeetupApi.Controllers
             }
 
             var eventToPatch = mapper.Map<EventForUpdateDto>(_event);
-            patchDoc.ApplyTo(eventToPatch);
+            patchDoc.ApplyTo(eventToPatch, ModelState);
+
+            TryValidateModel(eventToPatch);
+
+            if (!ModelState.IsValid)
+            {
+                logger.LogError("Invalid model state for the patch document");
+                return UnprocessableEntity(ModelState);
+            }
+
             mapper.Map(eventToPatch, _event);
             await repository.SaveAsync();
 

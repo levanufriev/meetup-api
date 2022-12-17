@@ -1,5 +1,9 @@
 using Contracts;
+using Entities.Dtos;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using MeetupApi.Extensions;
+using MeetupApi.Validators;
 using Repository;
 using Serilog;
 
@@ -10,6 +14,9 @@ var logger = new LoggerConfiguration()
     .ReadFrom.Configuration(builder.Configuration).Enrich.FromLogContext().CreateLogger();
 builder.Logging.ClearProviders();
 builder.Logging.AddSerilog(logger);
+
+builder.Services.AddFluentValidation();
+builder.Services.AddValidatorsFromAssemblyContaining<IAssemblyMarker>();
 
 builder.Services.ConfigureSqlContext(builder.Configuration);
 builder.Services.AddScoped<IEventRepository, EventRepository>();
