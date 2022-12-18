@@ -2,12 +2,14 @@
 using Contracts;
 using Entities.Dtos;
 using Entities.Models;
+using Entities.RequestFeatures;
 using FluentValidation;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json;
 
 namespace MeetupApi.Controllers
 {
@@ -27,9 +29,10 @@ namespace MeetupApi.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetEvents()
+        public async Task<IActionResult> GetEvents([FromQuery] RequestParameters parameters)
         {
-            var events = await repository.GetAllEventsAsync(false);
+            var events = await repository.GetAllEventsAsync(parameters, false);
+            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(events.MetaData));
             var eventsDto = mapper.Map<IEnumerable<EventDto>>(events);
             return Ok(eventsDto);
         }
