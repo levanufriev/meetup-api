@@ -11,6 +11,8 @@ namespace Entities.RequestFeatures
         public int PageNumber { get; set; } = 1;
         public int PageSize { get; set; } = 2;
 
-        public DateTime MinDate { get; set; } = DateTime.UtcNow;
+        public DateTime MinDate { get; set; } = DateTime.UtcNow.AddDays(-7);
+
+        public string SearchTheme { get; set; } = string.Empty;
     }
 }

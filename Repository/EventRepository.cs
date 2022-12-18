@@ -28,7 +28,9 @@ namespace Repository
 
         public async Task<PagedList<Event>> GetAllEventsAsync(RequestParameters parameters, bool trackChanges)
         {
-            var events = await FindByCondition(e => (e.Date>=parameters.MinDate), trackChanges)
+            var events = await FindAll(trackChanges)
+                               .Filter(parameters.MinDate)
+                               .Search(parameters.SearchTheme)
                                .OrderBy(e => e.Theme)
                                .ToListAsync();
             
