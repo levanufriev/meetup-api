@@ -41,6 +41,12 @@ namespace MeetupApi.Controllers
         public async Task<IActionResult> GetEvent(Guid id)
         {
             var _event = await repository.GetEventAsync(id, false);
+            if (_event == null)
+            {
+                logger.LogError($"Event with id: {id} doesn't exist in the database");
+                return NotFound();
+            }
+
             var eventDto = mapper.Map<EventDto>(_event);
             return Ok(eventDto);
         }

@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeetupApi", "MeetupApi\MeetupApi.csproj", "{E598D0CD-064E-4604-9214-D76D4A415BD1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MeetupApi", "MeetupApi\MeetupApi.csproj", "{E598D0CD-064E-4604-9214-D76D4A415BD1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{7B812659-8CCF-4A53-BB62-F1DE6C8D44E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "Entities\Entities.csproj", "{7B812659-8CCF-4A53-BB62-F1DE6C8D44E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contracts", "Contracts\Contracts.csproj", "{0E18B587-D9D0-4B9F-B985-74941F071D89}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contracts", "Contracts\Contracts.csproj", "{0E18B587-D9D0-4B9F-B985-74941F071D89}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Repository\Repository.csproj", "{CFE87FE4-7749-47B7-A783-1D399B474E13}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repository", "Repository\Repository.csproj", "{CFE87FE4-7749-47B7-A783-1D399B474E13}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeetupApi.Tests", "MeetupApi.Tests\MeetupApi.Tests.csproj", "{CF2B6B76-D746-47A8-BEE4-52748C8FE9D4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{CFE87FE4-7749-47B7-A783-1D399B474E13}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CFE87FE4-7749-47B7-A783-1D399B474E13}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CFE87FE4-7749-47B7-A783-1D399B474E13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF2B6B76-D746-47A8-BEE4-52748C8FE9D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF2B6B76-D746-47A8-BEE4-52748C8FE9D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF2B6B76-D746-47A8-BEE4-52748C8FE9D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF2B6B76-D746-47A8-BEE4-52748C8FE9D4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

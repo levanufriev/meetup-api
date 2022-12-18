@@ -9,9 +9,9 @@ namespace Entities.RequestFeatures
     public class RequestParameters
     {
         public int PageNumber { get; set; } = 1;
-        public int PageSize { get; set; } = 2;
+        public int PageSize { get; set; } = 10;
 
-        public DateTime MinDate { get; set; } = DateTime.UtcNow.AddDays(-7);
+        public DateTime MinDate { get; set; } = DateTime.MinValue;
 
         public string SearchTheme { get; set; } = string.Empty;
     }
