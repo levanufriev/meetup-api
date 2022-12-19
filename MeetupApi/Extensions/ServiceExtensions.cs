@@ -39,7 +39,8 @@ namespace MeetupApi.Extensions
             var jwtSettings = configuration.GetSection("JwtSettings");
             var secretKey = jwtSettings.GetSection("Secret").Value;
 
-            services.AddAuthentication(opt => {
+            services.AddAuthentication(opt =>
+            {
                 opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             })
@@ -62,6 +63,7 @@ namespace MeetupApi.Extensions
         {
             services.AddSwaggerGen(s =>
             {
+                s.SwaggerDoc("v1", new OpenApiInfo { Title = "Meetup API", Version = "v1" });
                 s.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
                     In = ParameterLocation.Header,
@@ -73,16 +75,18 @@ namespace MeetupApi.Extensions
 
                 s.AddSecurityRequirement(new OpenApiSecurityRequirement()
                 {
-                    new OpenApiSecurityScheme()
                     {
-                        Reference = new OpenApiReference
+                        new OpenApiSecurityScheme
                         {
-                            Type = ReferenceType.SecurityScheme,
-                            Id = "Bearer"
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            },
+                            Name = "Bearer"
                         },
-                        Name = "Bearer"
-                    },
-                    new List<string>()
+                        new List<string>()
+                    }
                 });
             });
         }
