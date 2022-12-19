@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contracts", "Contracts\Cont
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repository", "Repository\Repository.csproj", "{CFE87FE4-7749-47B7-A783-1D399B474E13}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeetupApi.Tests", "MeetupApi.Tests\MeetupApi.Tests.csproj", "{CF2B6B76-D746-47A8-BEE4-52748C8FE9D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MeetupApi.Tests", "MeetupApi.Tests\MeetupApi.Tests.csproj", "{CF2B6B76-D746-47A8-BEE4-52748C8FE9D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationService", "AuthenticationService\AuthenticationService.csproj", "{EDA371D3-A51B-4585-84A9-88C3355665A6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{CF2B6B76-D746-47A8-BEE4-52748C8FE9D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF2B6B76-D746-47A8-BEE4-52748C8FE9D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF2B6B76-D746-47A8-BEE4-52748C8FE9D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDA371D3-A51B-4585-84A9-88C3355665A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDA371D3-A51B-4585-84A9-88C3355665A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDA371D3-A51B-4585-84A9-88C3355665A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDA371D3-A51B-4585-84A9-88C3355665A6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

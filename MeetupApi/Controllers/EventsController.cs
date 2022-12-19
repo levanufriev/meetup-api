@@ -5,6 +5,7 @@ using Entities.Models;
 using Entities.RequestFeatures;
 using FluentValidation;
 using FluentValidation.Results;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
@@ -28,7 +29,7 @@ namespace MeetupApi.Controllers
             this.mapper = mapper;
         }
 
-        [HttpGet]
+        [HttpGet, Authorize(Roles = "user")]
         public async Task<IActionResult> GetEvents([FromQuery] RequestParameters parameters)
         {
             var events = await repository.GetAllEventsAsync(parameters, false);
@@ -37,7 +38,7 @@ namespace MeetupApi.Controllers
             return Ok(eventsDto);
         }
 
-        [HttpGet("{id}", Name = "EventById")]
+        [HttpGet("{id}", Name = "EventById"), Authorize(Roles = "user")]
         public async Task<IActionResult> GetEvent(Guid id)
         {
             var _event = await repository.GetEventAsync(id, false);
@@ -51,7 +52,7 @@ namespace MeetupApi.Controllers
             return Ok(eventDto);
         }
 
-        [HttpPost]
+        [HttpPost, Authorize(Roles = "admin")]
         public async Task<IActionResult> CreateEvent([FromBody] EventForCreationDto eventForCreationDto)
         {
             if (eventForCreationDto == null)
@@ -68,7 +69,7 @@ namespace MeetupApi.Controllers
             return CreatedAtRoute("EventById", new { id = eventDto.Id }, eventDto);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("{id}"), Authorize(Roles = "admin")]
         public async Task<IActionResult> UpdateEvent(Guid id, [FromBody] EventForUpdateDto eventForUpdateDto)
         {
             if (eventForUpdateDto == null)
@@ -90,7 +91,7 @@ namespace MeetupApi.Controllers
             return NoContent();
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}"), Authorize(Roles = "admin")]
         public async Task<IActionResult> DeleteEvent(Guid id)
         {
             var _event = await repository.GetEventAsync(id, false);
@@ -106,7 +107,7 @@ namespace MeetupApi.Controllers
             return NoContent();
         }
 
-        [HttpPatch("{id}")]
+        [HttpPatch("{id}"), Authorize(Roles = "admin")]
         public async Task<IActionResult> PartiallyUpdateEvent(Guid id, [FromBody] JsonPatchDocument<EventForUpdateDto> patchDoc)
         {
             if (patchDoc == null)
