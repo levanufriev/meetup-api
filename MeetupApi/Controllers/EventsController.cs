@@ -29,7 +29,7 @@ namespace MeetupApi.Controllers
             this.mapper = mapper;
         }
 
-        [HttpGet, Authorize(Roles = "user")]
+        [HttpGet, Authorize]
         public async Task<IActionResult> GetEvents([FromQuery] RequestParameters parameters)
         {
             var events = await repository.GetAllEventsAsync(parameters, false);
@@ -38,7 +38,7 @@ namespace MeetupApi.Controllers
             return Ok(eventsDto);
         }
 
-        [HttpGet("{id}", Name = "EventById"), Authorize(Roles = "user")]
+        [HttpGet("{id}", Name = "EventById"), Authorize]
         public async Task<IActionResult> GetEvent(Guid id)
         {
             var _event = await repository.GetEventAsync(id, false);
