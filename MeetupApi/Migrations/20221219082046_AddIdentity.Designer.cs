@@ -4,6 +4,7 @@ using Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MeetupApi.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    partial class RepositoryContextModelSnapshot : ModelSnapshot
+    [Migration("20221219082046_AddIdentity")]
+    partial class AddIdentity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -54,7 +57,7 @@ namespace MeetupApi.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("37ea20f6-3520-468f-a2a1-6ff7d1638784"),
+                            Id = new Guid("223c8dfe-8774-4eac-9eb9-2d0bd296517c"),
                             Date = new DateTime(2022, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "111",
                             Place = "1",
@@ -63,7 +66,7 @@ namespace MeetupApi.Migrations
                         },
                         new
                         {
-                            Id = new Guid("69987764-e354-4f73-8ab5-8104781940d7"),
+                            Id = new Guid("5d5b230a-767b-40de-b7e9-849f3904536b"),
                             Date = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "222",
                             Place = "2",
@@ -72,7 +75,7 @@ namespace MeetupApi.Migrations
                         },
                         new
                         {
-                            Id = new Guid("d84351db-293a-438d-8182-f6272ecaa688"),
+                            Id = new Guid("528067bf-1ba4-434d-bcf4-fbf9baef9f20"),
                             Date = new DateTime(2023, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "333",
                             Place = "3",
@@ -81,7 +84,7 @@ namespace MeetupApi.Migrations
                         },
                         new
                         {
-                            Id = new Guid("efc6dbee-80db-446b-b16a-e318d8faada6"),
+                            Id = new Guid("000412f0-f68c-43af-8b42-ff2c51848b97"),
                             Date = new DateTime(2023, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "444",
                             Place = "4",
@@ -90,7 +93,7 @@ namespace MeetupApi.Migrations
                         },
                         new
                         {
-                            Id = new Guid("bafaf648-07eb-40fd-8dba-dbebd8fc817d"),
+                            Id = new Guid("8a90853e-e71d-4505-b0a3-61bdaa484d92"),
                             Date = new DateTime(2023, 4, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "555",
                             Place = "5",
@@ -197,22 +200,6 @@ namespace MeetupApi.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "46c878be-470a-4eef-861c-864bf5e9cee9",
-                            ConcurrencyStamp = "4ba1609b-30f4-4c4d-ae22-bf26c74f1326",
-                            Name = "admin",
-                            NormalizedName = "ADMIN"
-                        },
-                        new
-                        {
-                            Id = "1d113beb-eba5-442e-9be7-cc310624dcdd",
-                            ConcurrencyStamp = "095a032d-1ce8-4902-bc3c-8776c8bd8a01",
-                            Name = "user",
-                            NormalizedName = "USER"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

@@ -15,6 +15,8 @@ namespace MeetupApi
             CreateMap<EventForCreationDto, Event>();
 
             CreateMap<EventForUpdateDto, Event>().ReverseMap();
+
+            CreateMap<UserForRegistrationDto, User>();
         }
     }
 }
